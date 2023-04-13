@@ -1,5 +1,5 @@
 ﻿using System;
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace P3
 {
@@ -40,8 +40,7 @@ namespace P3
         // Serializar a JSON
         public string ToJSON()
         {
-            //return JsonConvert.SerializeObject(this);
-            return null;
+            return JsonConvert.SerializeObject(this);
         }
     }
 }
