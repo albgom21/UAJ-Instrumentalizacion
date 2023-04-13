@@ -1,4 +1,5 @@
-﻿public class endLvlEvent : TrackerEvent
+﻿using P3;
+public class endLvlEvent : TrackerEvent
 {
     private int lvlID;
     public endLvlEvent() : base(EventType.END_LVL) { }

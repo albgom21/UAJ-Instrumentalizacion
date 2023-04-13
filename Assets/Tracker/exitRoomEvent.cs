@@ -1,4 +1,6 @@
-﻿public class exitRoomEvent : TrackerEvent
+﻿using P3;
+
+public class exitRoomEvent : TrackerEvent
 {
     private RoomID roomID;
     public exitRoomEvent() : base(EventType.EXIT_ROOM){}

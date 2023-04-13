@@ -1,9 +1,12 @@
-﻿public class JSONSerializer: ISerializer
+﻿namespace P3
 {
-    public JSONSerializer() { }
-
-    public override string Serialize(TrackerEvent te)
+    public class JSONSerializer : ISerializer
     {
-        throw new System.NotImplementedException();
+        public JSONSerializer() { }
+
+        public override string Serialize(TrackerEvent te)
+        {
+            return te.toJSON();
+        }
     }
 }

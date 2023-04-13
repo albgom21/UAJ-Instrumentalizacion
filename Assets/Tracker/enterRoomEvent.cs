@@ -1,4 +1,5 @@
-﻿public class enterRoomEvent : TrackerEvent
+﻿using P3;
+public class enterRoomEvent : TrackerEvent
 {
     private RoomID roomID;
     public enterRoomEvent() : base(EventType.ENTER_ROOM){}

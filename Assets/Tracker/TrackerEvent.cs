@@ -1,39 +1,46 @@
 ﻿using System;
+using Newtonsoft.Json;
 
-public class TrackerEvent
+namespace P3
 {
-    public enum EventType
+    // Clase que representa un evento de nuestro Tracker
+    public class TrackerEvent
     {
+        public enum EventType      // Tipos de eventos
+        {
+            INI_SESSION,           // Inicio de la sesión
+            END_SESSION,           // Final de la sesión
+            ENTER_ROOM,            // Entrada en una sala
+            EXIT_ROOM,             // Salida en una sala
+            INI_LVL,               // Inicio del nivel
+            END_LVL,               // Final del nivel
+            PRESS_BUTTON,          // Pulsación de botón del láser
+            OPEN_FIRST_DOOR,       // Apertura primera puerta
+            POS_PLAYER_ATTACK,     // Posición del jugador cuando se ataque
+            POS_PLAYER_INTERACT    // Posición del jugador cuando interactúa
+        }
+        public enum RoomID         // Nombres de salas ---------METER MAS TIPOS DE ROOMS---------------
+        {
+            LASER                  //RoomLaser
+        }
 
-        INI_SESSION,           //Inicio de la sesión
-        END_SESSION,           //Final de la sesión
-        ENTER_ROOM,            //Entrada en una sala
-        EXIT_ROOM,             //Salida en una sala
-        INI_LVL,               //Inicio del nivel
-        END_LVL,               //Final del nivel
-        PRESS_BUTTON,          //Pulsación de botón del láser
-        OPEN_FIRST_DOOR,       //Apertura primera puerta
-        POS_PLAYER_ATTACK,     //Posición del jugador cuando se ataque
-        POS_PLAYER_INTERACT    //Posición del jugador cuando interactúa
-    }
-    public enum RoomID
-    {
-        LASER                  //RoomLaser
-    }
+        // Atributos mínimos que tienen todos los eventos
 
-    protected EventType tipo;
-    protected long timestamp;
+        protected EventType tipo;  // Tipo de evento
 
-    public TrackerEvent() {
-        
-    }
-    public TrackerEvent(EventType t)
-    {
-        // Obtener la fecha y hora actual
-        DateTimeOffset now = DateTimeOffset.Now;
-        // Convertir la fecha y hora a un timestamp de tiempo POSIX
-        timestamp = now.ToUnixTimeSeconds();
+        protected long timestamp;  // Marca de tiempo en POSIX
 
-        tipo = t;
+        // Crear evento
+        public TrackerEvent(EventType t)
+        {
+            timestamp = Tracker.Instance.GetTimeStamp();
+            tipo = t;
+        }
+
+        // Serializar a JSON
+        public string toJSON()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

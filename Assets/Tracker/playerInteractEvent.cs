@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using P3;
+
 public class playerInteractEvent : TrackerEvent
 {
     private Vector2 posPlayer;

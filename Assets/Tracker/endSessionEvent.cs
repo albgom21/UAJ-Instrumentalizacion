@@ -1,4 +1,16 @@
-﻿public class endSessionEvent : TrackerEvent
+﻿using System;
+using P3;
+
+public class endSessionEvent : TrackerEvent
 {
-    public endSessionEvent() : base(EventType.END_SESSION) { }
+    private string sessionID;
+    public endSessionEvent() : base(EventType.END_SESSION)
+    {
+        sessionID = Tracker.Instance.GetSessionId();
+    }
+   
+    public string getsessionID()
+    {
+        return sessionID;
+    }
 }

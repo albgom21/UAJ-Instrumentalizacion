@@ -1,6 +1,9 @@
-﻿public abstract class ISerializer
+﻿namespace P3
 {
-    public ISerializer() { }
+    public abstract class ISerializer
+    {
+        public ISerializer() { }
 
-    public abstract string Serialize(TrackerEvent te);
+        public abstract string Serialize(TrackerEvent te);
+    }
 }

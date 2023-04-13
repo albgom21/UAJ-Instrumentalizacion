@@ -1,4 +1,6 @@
-﻿public class iniLvlEvent : TrackerEvent
+﻿using P3;
+
+public class iniLvlEvent : TrackerEvent
 {
     private int lvlID;
     public iniLvlEvent() : base(EventType.INI_LVL){}
