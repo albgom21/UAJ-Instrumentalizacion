@@ -6,7 +6,7 @@
 
         public override string Serialize(TrackerEvent te)
         {
-            return te.toJSON();
+            return te.ToJSON();
         }
     }
 }

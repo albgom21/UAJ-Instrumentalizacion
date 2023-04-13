@@ -52,6 +52,8 @@ namespace P3
 
             // Marcar como activo el Tracker
             activeTracker = true;
+
+            timeToFlushEvents = 5f;
             return true;
         }
 
