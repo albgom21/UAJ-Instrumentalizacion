@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private Daga daga;
     private AudioSource walking;
     private float lastDir = 0;
-    
+
     void Start()
     {
         gun = GetComponent<Pistola>();
@@ -67,7 +67,8 @@ public class PlayerController : MonoBehaviour
                 }
                 fov.SetOrigin(transform.position);
             }
-
+            if (Input.GetButtonDown("Use")) Tracker.TrackEvent(new playerInteractEvent(transform.position.x, transform.position.y));
+            if (Input.GetMouseButtonDown(0)) Tracker.TrackEvent(new playerAttackEvent(transform.position.x, transform.position.y));
         }
     }
 
@@ -191,7 +192,7 @@ public class PlayerController : MonoBehaviour
             door.MovPuerta(transform);
         }
         FirstDoor fd = collision.GetComponent<FirstDoor>();
-        if(fd && use)
+        if (fd && use)
         {
             fd.OpenFirstDoor();
         }
