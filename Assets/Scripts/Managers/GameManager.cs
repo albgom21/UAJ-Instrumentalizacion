@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using P3;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,9 +41,9 @@ public class GameManager : MonoBehaviour
 
     private int ammo_, startAmmo_ = 5;
 
-    private bool paused = false, continueG = false, game = false, dead = false , daga = true;
+    private bool paused = false, continueG = false, game = false, dead = false, daga = true;
 
-    private string currentScene , NexLevelLoading;
+    private string currentScene, NexLevelLoading;
 
     [Header("Cheats")]
     [SerializeField]
@@ -54,6 +55,9 @@ public class GameManager : MonoBehaviour
         {
             gmInstance_ = this;
             LoadSave();
+            // Inicializar el tracker y el envio de los eventos para persistir
+            Tracker.Init();
+            StartCoroutine(Tracker.FlushEvents());
             Debug.Log("GameManager Set");
         }
         else if (gmInstance_ != this)
@@ -126,6 +130,11 @@ public class GameManager : MonoBehaviour
         return saveGame != null;
     }
 
+    private void OnDestroy()
+    {
+        if (gmInstance_ == this)
+            Tracker.Instance.End();
+    }
 
     // CARGA Y GUARDADO DEL JUEGO
 
@@ -521,7 +530,8 @@ public class GameManager : MonoBehaviour
         LaserPool.transform.parent = escenario;
     }
 
-    public string SetLoadingManager(LoadManager loadManager) {
+    public string SetLoadingManager(LoadManager loadManager)
+    {
         loadManager_ = loadManager;
         return NexLevelLoading;
     }

@@ -4,16 +4,17 @@ using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using static P3.TrackerEvent;
 
 namespace P3
 {
     public class Tracker
     {
         private static Tracker instance = null;
-        private IPersistance persistenceObject = null;  // Persistencia
-        private string sessionID;                       // ID único de la sesión  
-        private bool activeTracker;                     // Bool para saber si está activo el Tracker
-        private float timeToFlushEvents;                // Tiempo entre cada persistencia
+        private static IPersistance persistenceObject = null;  // Persistencia
+        private static string sessionID;                       // ID único de la sesión  
+        private static bool activeTracker;                     // Bool para saber si está activo el Tracker
+        private static float timeToFlushEvents;                // Tiempo entre cada persistencia
 
         // Constructor privado para evitar la creación de instancias fuera de la clase
         private Tracker() { }
@@ -31,7 +32,7 @@ namespace P3
         }
 
         // Método para inicializar la instancia única del Singleton
-        public bool Init()
+        public static bool Init()
         {
             if (instance == null)
                 instance = new Tracker();
@@ -45,7 +46,7 @@ namespace P3
             sessionID = GenerateUniqueId(DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
 
             // El serializer puede ser de otro tipo si tenemos más, refactorizar en ese caso
-            persistenceObject = new FilePersistance(Application.persistentDataPath, new JSONSerializer());
+            persistenceObject = new FilePersistance(Application.persistentDataPath + "/Persistencia"+ DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".json", new JSONSerializer());
 
             // Trackear el evento de inicio de la sesión
             TrackEvent(new iniSessionEvent());
@@ -73,13 +74,13 @@ namespace P3
         }
 
         // Persistir un evento
-        public void TrackEvent(TrackerEvent e)
+        public static void TrackEvent(TrackerEvent e)
         {
             persistenceObject.Send(e);
         }
 
         // Mientras esté activo el Tracker cada X segundos llamar al módulo de persistencia
-        public IEnumerator FlushEvents()
+        public static IEnumerator FlushEvents()
         {
             while (activeTracker)
             {
@@ -88,7 +89,7 @@ namespace P3
             }
         }
 
-        public string GenerateUniqueId(string obj)
+        public static string GenerateUniqueId(string obj)
         {
             // Convierte la cadena en un arreglo de bytes utilizando UTF-8
             byte[] bytes = Encoding.UTF8.GetBytes(obj);

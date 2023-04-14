@@ -2,23 +2,23 @@
 using P3;
 public class playerAttackEvent : TrackerEvent
 {
+    public float posX, posY;
 
-    private Vector2 posPlayer; // PREGUNTAR SI SE PUEDE USAR el tipo Vector 2 que depende de using UnityEngine;
+    //public playerAttackEvent() : base(EventType.POS_PLAYER_ATTACK) { }
 
-    public playerAttackEvent() : base(EventType.POS_PLAYER_ATTACK) { }
-
-    public playerAttackEvent(Vector2 pos) : base(EventType.POS_PLAYER_ATTACK)
+    public playerAttackEvent(float posX_, float posY_) : base(EventType.POS_PLAYER_ATTACK)
     {
-        posPlayer = pos;
+        posX = posX_;
+        posY = posY_;
     }
 
-    public void setPos(Vector2 pos)
-    {
-        posPlayer = pos;
-    }
+    //public void setPos(Vector2 pos)
+    //{
+    //    posPlayer = pos;
+    //}
 
-    public Vector2 getPos()
-    {
-        return posPlayer;
-    }
+    //public Vector2 getPos()
+    //{
+    //    return posPlayer;
+    //}
 }

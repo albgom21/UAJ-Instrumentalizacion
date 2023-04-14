@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace P3
 {
@@ -21,14 +23,22 @@ namespace P3
         }
         public enum RoomID         // Nombres de salas ---------METER MAS TIPOS DE ROOMS---------------
         {
-            LASER                  //RoomLaser
+            LASER,                  //RoomLaser
+            PASILLO
         }
 
         // Atributos mínimos que tienen todos los eventos
 
-        protected EventType tipo;  // Tipo de evento
+        public EventType tipo;  // Tipo de evento
 
-        protected long timestamp;  // Marca de tiempo en POSIX
+        public long timestamp;  // Marca de tiempo en POSIX
+
+
+        // Permitir que los enumerados se persistan con su nombre en lugar de su valor entero
+        static JsonSerializerSettings settings = new JsonSerializerSettings
+        {
+            Converters = new List<JsonConverter> { new StringEnumConverter() }
+        };
 
         // Crear evento
         public TrackerEvent(EventType t)
@@ -40,7 +50,7 @@ namespace P3
         // Serializar a JSON
         public string ToJSON()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonConvert.SerializeObject(this, settings);
         }
     }
 }

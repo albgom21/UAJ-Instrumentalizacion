@@ -5,7 +5,7 @@ namespace P3
 {
     public class iniSessionEvent : TrackerEvent
     {
-        private string sessionID;
+        public string sessionID;
         public iniSessionEvent() : base(EventType.INI_SESSION)
         {
             sessionID = Tracker.Instance.GetSessionId();
