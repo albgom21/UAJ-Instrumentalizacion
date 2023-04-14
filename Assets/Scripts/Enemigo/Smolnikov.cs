@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using P3;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class Smolnikov : MonoBehaviour
         if (collision.gameObject.GetComponent<Daga>())
         {
             Key.SetActive(true);
+            Tracker.TrackEvent(new endLvlEvent(2));
             Destroy(gameObject);
         }
     }

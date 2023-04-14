@@ -50,6 +50,7 @@ namespace P3
 
             // Trackear el evento de inicio de la sesión
             TrackEvent(new iniSessionEvent());
+            TrackEvent(new iniLvlEvent(2));
 
             // Marcar como activo el Tracker
             activeTracker = true;
