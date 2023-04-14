@@ -10,7 +10,7 @@ namespace P3
 {
     public class Tracker
     {
-        private static Tracker instance = null;
+        public static Tracker instance = null;
         private static IPersistance persistenceObject = null;  // Persistencia
         private static string sessionID;                       // ID único de la sesión  
         private static bool activeTracker;                     // Bool para saber si está activo el Tracker
