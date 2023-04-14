@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using P3;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -184,9 +185,15 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         Puerta door = collision.GetComponent<Puerta>();
-        if (door && Input.GetButtonDown("Use"))
+        bool use = Input.GetButtonDown("Use");
+        if (door && use)
         {
             door.MovPuerta(transform);
+        }
+        FirstDoor fd = collision.GetComponent<FirstDoor>();
+        if(fd && use)
+        {
+            fd.OpenFirstDoor();
         }
     }
     public void SetLaser(bool laser_)

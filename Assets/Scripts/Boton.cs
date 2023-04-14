@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using P3;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ public class Boton : MonoBehaviour
         PlayerController detectorJugador = collision.GetComponent<PlayerController>();
         if (detectorJugador && Input.GetButtonDown("Use") && active)
         {
+            Tracker.TrackEvent(new pressButtonEvent());
             source.Play();
             active = false;
             GetComponent<SpriteRenderer>().color = Color.green;

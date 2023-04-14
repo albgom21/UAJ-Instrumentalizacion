@@ -10,41 +10,25 @@ public class GameManager : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField]
     private GameObject fovPrefab = null, pulsePrefab = null, EnemigoPrefab = null, PlayerPrefab = null, PuertaPrefab = null, BotonPrefab = null, LaserPrefab = null;
-
     private UIManager UIManager_;
-
     private LoadManager loadManager_;
-
     private GameObject FieldOfViewPool, PulsePool, player_, mueblesPadre, EnemiesPool, NodesPool, PuertaPool, BotonesPool, LaserPool;
-
     private Pistola scriptPistola;
-
     private PlayerController scriptPC;
-
     private SaveManager.GameSave saveGame = null;
-
     [Header("Save")]
     public bool save = false;
     [Header("Json")]
     [SerializeField]
     private TextAsset jsonlvl1 = null, jsonlvl2 = null;
-
     List<EnemigoManager> enemies = new List<EnemigoManager>();
-
     List<Puerta> puertas_ = new List<Puerta>();
-
     List<Boton> botones_ = new List<Boton>();
-
     private Camera camara;
-
     public static GameManager gmInstance_;
-
     private int ammo_, startAmmo_ = 5;
-
     private bool paused = false, continueG = false, game = false, dead = false, daga = true;
-
     private string currentScene, NexLevelLoading;
-
     [Header("Cheats")]
     [SerializeField]
     private Transform endPoint;
@@ -145,7 +129,6 @@ public class GameManager : MonoBehaviour
         if (loadString != null)
         {
             Debug.Log("GameLoaded " + loadString);
-
             saveGame = JsonUtility.FromJson<SaveManager.GameSave>(loadString);
         }
     }
@@ -169,7 +152,6 @@ public class GameManager : MonoBehaviour
 
     void loadLvl(SaveManager.GameSave lvlLoader_)
     {
-
         ammo_ = lvlLoader_.ammo_;
         Instantiate(PlayerPrefab, lvlLoader_.playerPos_, Quaternion.identity);
 
@@ -190,6 +172,7 @@ public class GameManager : MonoBehaviour
             puerta.name = "Puerta" + i;
             puerta.SetPuerta(p.open_);
             i++;
+            //if(i==0) puerta.firstDoor = true;
         }
         i = 0;
         foreach (SaveManager.BotonStates b in lvlLoader_.botones_)

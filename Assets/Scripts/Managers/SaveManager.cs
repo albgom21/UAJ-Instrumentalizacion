@@ -36,7 +36,7 @@ public static class SaveManager
             enemiesOut.Add(eSettings);
         }
         List<PuertasStates> puertasOut = new List<PuertasStates>();
-
+        int i = 0;
         foreach (Puerta p in puertas )
         {
             PuertasStates pOut = new PuertasStates();
@@ -44,7 +44,10 @@ public static class SaveManager
             if (p.GetOpen()) pOut.rotation_ = p.GetEndRot();
             else pOut.rotation_ = p.transform.localEulerAngles;
             pOut.open_ = p.GetOpen();
+            if (i == 0) pOut.firstDoor_ = true;
+            else pOut.firstDoor_ = false;
             puertasOut.Add(pOut);
+            i++;
         }
 
         List<BotonStates> botonOut = new List<BotonStates>();
@@ -111,6 +114,7 @@ public static class SaveManager
         public Vector3 position_;
         public Vector3 rotation_;
         public bool open_;
+        public bool firstDoor_;
     }
     [Serializable]
     public struct LaserTr
