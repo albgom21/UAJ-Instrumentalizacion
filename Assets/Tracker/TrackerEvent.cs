@@ -64,6 +64,7 @@ namespace P3
             HALL_8_9,
             HALL_9_10,
             HALL_7_11,
+            HALL_9_11,
             HALL_11_12,
             HALL_5_13,
             HALL_13_14,
