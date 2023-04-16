@@ -1,5 +1,4 @@
-﻿using System;
-using P3;
+﻿using P3;
 
 public class endSessionEvent : TrackerEvent
 {

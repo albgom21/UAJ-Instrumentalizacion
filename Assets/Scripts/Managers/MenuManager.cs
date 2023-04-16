@@ -52,7 +52,7 @@ public class MenuManager : MonoBehaviour
 
             save.onClick.AddListener(delegate { SettingsManager.smInstance_.Save(); });
         }
-        newGame.onClick.AddListener(delegate { GameManager.gmInstance_.ChangeScene("Nivel 1"); });
+        newGame.onClick.AddListener(delegate { GameManager.gmInstance_.ChangeScene("Nivel 2"); });
         Exit.onClick.AddListener(delegate { GameManager.gmInstance_.ExitGame(); });
 
         inputModule = eventSystem.GetComponent<StandaloneInputModule>();

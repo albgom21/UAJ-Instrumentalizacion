@@ -132,6 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &213960443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2971181452301506994, guid: f1d635091723a1b4684ec1dd5e1b7731,
+    type: 3}
+  m_PrefabInstance: {fileID: 1267336342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &270442978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -676,6 +682,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Alignment
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227711453180122626, guid: 95654e1245e701e4cbf8ca968e5280c7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227711453180122626, guid: 95654e1245e701e4cbf8ca968e5280c7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227711453180122626, guid: 95654e1245e701e4cbf8ca968e5280c7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227711453180122626, guid: 95654e1245e701e4cbf8ca968e5280c7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 213960443}
+    - target: {fileID: 7227711453180122626, guid: 95654e1245e701e4cbf8ca968e5280c7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: toLvl2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116799404202204661, guid: 95654e1245e701e4cbf8ca968e5280c7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95654e1245e701e4cbf8ca968e5280c7, type: 3}

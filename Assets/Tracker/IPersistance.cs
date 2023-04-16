@@ -1,6 +1,4 @@
-﻿using P3;
-
-namespace P3
+﻿namespace P3
 {
     public abstract class IPersistance
     {

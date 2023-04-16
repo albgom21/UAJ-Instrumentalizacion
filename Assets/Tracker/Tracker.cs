@@ -1,10 +1,8 @@
-﻿using P3;
-using System;
+﻿using System;
 using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
-using static P3.TrackerEvent;
 
 namespace P3
 {
@@ -46,7 +44,8 @@ namespace P3
             sessionID = GenerateUniqueId(DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
 
             // El serializer puede ser de otro tipo si tenemos más, refactorizar en ese caso
-            persistenceObject = new FilePersistance(Application.persistentDataPath + "/Persistencia"+ DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".json", new JSONSerializer());
+            // RUTA C:\Users\(NOMBRE DEL USUARIO EN WINDOWS)\AppData\LocalLow\DefaultCompany\Pulse_P1
+            persistenceObject = new FilePersistance(Application.persistentDataPath + "/Persistencia"+ sessionID + ".json", new JSONSerializer());
 
             // Trackear el evento de inicio de la sesión
             TrackEvent(new iniSessionEvent());

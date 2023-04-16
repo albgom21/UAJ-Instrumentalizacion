@@ -172,7 +172,6 @@ public class GameManager : MonoBehaviour
             puerta.name = "Puerta" + i;
             puerta.SetPuerta(p.open_);
             i++;
-            //if(i==0) puerta.firstDoor = true;
         }
         i = 0;
         foreach (SaveManager.BotonStates b in lvlLoader_.botones_)
@@ -547,6 +546,11 @@ public class GameManager : MonoBehaviour
             paused = false;
             Time.timeScale = 1;
         }
+    }
+
+    public void toLvl2()
+    {
+        SceneManager.LoadScene("Nivel 2");
     }
 
     /* -------------------- */
