@@ -548,9 +548,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void toLvl1()
+    {
+        SceneManager.LoadScene("Nivel 1");
+        Tracker.TrackEvent(new iniLvlEvent(1));
+    }
     public void toLvl2()
     {
         SceneManager.LoadScene("Nivel 2");
+        Tracker.TrackEvent(new iniLvlEvent(2));
     }
 
     /* -------------------- */
